@@ -1,6 +1,10 @@
 {% url 'products' as product %}
 {% url 'index' as index %}
 
+{% url 'register' as register %}
+{% url 'login' as login %}
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -68,10 +72,10 @@
             </li>
             {% else %}
             <li>
-              <a href="{% url 'register' %}"><i class="fa fa-user"></i> Register</a>
+              <a href="{% url 'register' %}" class="{% if request.path == register %} active {% endif %}"><i class="fa fa-user"></i> Register</a>
             </li>
             <li>
-              <a href="{% url 'login' %}"><i class="fa fa-lock"></i> Login</a>
+              <a href="{% url 'login' %}" class="{% if request.path == login %} active {% endif %}"><i class="fa fa-lock"></i> Login</a>
             </li>
             {% endif %}
           </ul>
@@ -85,6 +89,7 @@
             <li><a href="contact-us.html">Contact</a></li>
           </ul>
         </div>
+        {% if request.path == index or request.path == product %}  
         <div class="search_box">
           <form action="{% url 'products' %}" method="get" class="search-form">
             {% csrf_token %}
@@ -94,6 +99,7 @@
             </button>
           </form>
         </div>
+        {% endif %}
       </div>
     </header>
 
