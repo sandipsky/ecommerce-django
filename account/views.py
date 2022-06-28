@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from .forms import CreateUser
-
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -31,7 +31,7 @@ def loginUser(request):
         if user is not None:
             login(request, user)
             return redirect('index')
-        elif user is None:
+        elif not User.objects.filter(username=username).exists():
             return render(request, 'login.html', {'error': 'User not found'})
         else:
             return render(request, 'login.html', {'error': 'Username or Password is Incorrect'})
