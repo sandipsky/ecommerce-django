@@ -8,15 +8,22 @@
     <br><br><br>
     <form method="post">
         {% csrf_token %}
+        {% if error %}
+        <div class="form-errors">
+            <span>{{error}}</span>
+        </div>
+        {% endif %}
         <div>
             <label for="username"><h3>Username</h3></label>
             <input type="text" name="username" class="text-input">
+           
         </div>
 
 
         <div>
             <label for="password1"><h3>Password</h3></label>
             <input type="password" name="password" class="text-input">
+           
         </div>
 
         <input type="submit" class="btn" value="Login">

@@ -1,4 +1,5 @@
 {% url 'products' as product %}
+{% url 'index' as index %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,14 +80,15 @@
       <div class="header-bot">
         <div class="mainmenu">
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{% url 'index' %}" class="{% if request.path == index %} active {% endif %}">Home</a></li>
             <li><a href="{% url 'products' %}" class="{% if request.path == product %} active {% endif %}">Products</a></li>
             <li><a href="contact-us.html">Contact</a></li>
           </ul>
         </div>
         <div class="search_box">
-          <form action="" method="post" class="search-form">
-            <input type="text" placeholder="Search" />
+          <form action="{% url 'products' %}" method="get" class="search-form">
+            {% csrf_token %}
+            <input type="text" name="search" placeholder="Search" value="{{search}}" />
             <button type="submit" class="search-button">
               <i class="fa fa-search"></i>
             </button>

@@ -3,6 +3,7 @@ from django.forms import ModelForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 
 class CreateUser(UserCreationForm):
@@ -45,3 +46,4 @@ class CreateUser(UserCreationForm):
         if User.objects.filter(email=email).exists() and email !="":
             raise forms.ValidationError("Email is already used")
         return email
+

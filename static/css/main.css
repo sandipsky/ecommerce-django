@@ -12,6 +12,7 @@
 a
 {
     text-decoration: none;
+    color: #333;
 }
 
 body
@@ -333,6 +334,8 @@ footer
   margin-left: 10px;
   /* border: 1px solid green; */
   width: 80%;
+  padding-bottom: 100px;
+  position: relative;
 }
 
 .rightside .title
@@ -352,20 +355,21 @@ footer
   display: flex;
   flex-direction: column;
   padding: 10px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 5px;
   width: 32%;
   margin: 5px;
   text-align: center;
+  box-shadow: 1.1rem 1.1rem 1.1rem -1rem #a0a0a033;
 }
-.productinfo h3, h2
+.productinfo h2
 {
   margin: 10px;
 }
 
 .productinfo a
 {
-  color: #363432;
+  color: #000;
 }
 
 .productinfo .btn
@@ -415,6 +419,27 @@ footer
     display: block;
 }
 
+.current
+{
+  position: absolute;
+  bottom: 20px;
+  left: 45%;
+}
+
+.next
+{
+  position: absolute;
+  bottom: 10px;
+  right: 10%;
+}
+
+.prev
+{
+  position: absolute;
+  bottom: 10px;
+  left: 10%;
+  width: fit-content;
+}
 
 
 /* registration and login */
@@ -427,6 +452,11 @@ footer
     background-color: white;
     border-radius: 5px;
     background: white;
+    
+}
+.auth-content a
+{
+  text-decoration: underline;
 }
 
 .auth-content .form-title

@@ -11,7 +11,7 @@
                 <ul>
                     <li><a href="{% url 'products' %}">All</a><span class="pull-right">{{count}}</span></li>
                     {% for category in categories %}  
-                    <li><a href="/?category={{category.id}}">{{category.name}}<span class="pull-right">{{category.product_count}}</span></a></li>
+                    <li><a href="/products/?category={{category.id}}">{{category.name}}<span class="pull-right">{{category.product_count}}</span></a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -19,11 +19,11 @@
             
         <div class="brands">
             <h1>Brands</h1>
-            <div class="brands-list">
-                <ul class="nav nav-pills nav-stacked">
+            <div class="brands-list">   
+                <ul>
                     <li><a href="{% url 'products' %}">All</a><span class="pull-right">{{count}}</span></li>
                     {% for brand in brands %}
-                    <li><a href="/?brand={{brand.id}}">{{brand.name}}<span class="pull-right">{{brand.product_count}}</span></a></li>
+                    <li><a href="/products/?brand={{brand.id}}">{{brand.name}}<span class="pull-right">{{brand.product_count}}</span></a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -34,15 +34,30 @@
     <div class="rightside">
         <h1 class="title">Products</h1>
         <div class="product-wrapper">
-            {% for product in products %}
+            {% for product in page_obj %}
             <div class="productinfo">
-                <img src="{{product.image.url}}" alt="" />
-                <h3>{{product.name}}</h3>
+                <a href="#"><img src="{{product.image.url}}" alt="" /></a>
+                <h2><a href="#">{{product.name}}</a></h2>
                 <h2>Rs. {{product.price}}</h2>
                 <a href="#" class="btn"><i class="fa fa-shopping-cart"></i>  Add to cart</a>
             </div>
             {% endfor %}
         </div>
+
+                {% if page_obj.has_previous %}
+
+                    <a href="?page={{ page_obj.previous_page_number }}" class="btn prev">Previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class = "btn next">Next</a>
+                    
+                {% endif %}
+          
     </div>
                 
                 

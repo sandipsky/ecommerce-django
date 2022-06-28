@@ -32,3 +32,4 @@ class Product(models.Model):
             return self.image.url
         else:
             return "/static/images/default.jpg"
+
