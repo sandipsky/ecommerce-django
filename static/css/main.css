@@ -13,6 +13,15 @@ a
 {
     text-decoration: none;
 }
+
+body
+{
+  background-color: #fdfdfd;
+}
+li
+{
+  list-style: none;
+}
 header
 {
     display: flex;
@@ -23,15 +32,17 @@ header
 {
     background-color: #f0f0e9;
     display: flex;
-    flex-direction: row;
+    flex-direction: row;  
     justify-content: space-around;
     align-items: center;
+    padding: 0 auto;
     /* border: 1px solid black; */
 }
-.contact 
+.logo span
 {
-    float: left;
+  color: #FE980F;
 }
+
 .header-top .contact ul li
 {
     display: inline-block;
@@ -73,11 +84,13 @@ header
 
 .header-mid
 {
+    width: 80%;
+    margin: 10px auto;
+    /* border: 1px solid green; */
     padding: 20px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #f5f5f5;
 }
 
 .shop-menu ul li {
@@ -113,10 +126,12 @@ header
 }
 .header-bot
 {
+    width: 80%;
+    margin: 0 auto;
     padding: 30px 0;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .mainmenu ul li{
@@ -157,6 +172,8 @@ header
     cursor: pointer;  
     color: #696763;           
 }
+
+
 footer
 {
     display: flex;
@@ -233,12 +250,13 @@ footer
   
   .searchform button i {
     color: #FFFFFF;
-    font-size: 20px;
+    font-size: 15px;
   }
   
   .searchform  button:hover, 
   .searchform  button:focus{
     background-color:#FE980F;
+    cursor: pointer;
   }
   
   .searchform p {
@@ -248,9 +266,197 @@ footer
 
   }
 
+.btn
+{
+  background: #FE980F;
+  border: medium none;
+  padding: 10px;
+  border: 2px solid #FE980F;
+  transition: 0.3s ease;
+}
+
+.btn:hover
+{
+  background: transparent;
+  color: #FE980F;
+  transition: 0.3s ease;
+}
 
 .container
 {
-  min-height: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px;
+  margin: 0px auto;
+  width: 95%;
+  
+
 }
 
+.leftside
+{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leftside h1
+{
+  text-align: center;
+  margin-bottom: 30px;
+  color: #FE980F;
+}
+
+.leftside li 
+{
+  padding: 3px;
+  
+}
+.leftside a
+{
+  color: #363432;
+}
+.pull-right
+{
+  float: right;
+}
+.category, .brands
+{
+  width: 90%;
+  margin-bottom: 40px;
+}
+
+.rightside
+{
+  margin-left: 10px;
+  /* border: 1px solid green; */
+  width: 80%;
+}
+
+.rightside .title
+{
+  text-align: center;
+  color: #FE980F;
+}
+.product-wrapper
+{
+  padding: 5px 0px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.productinfo
+{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 32%;
+  margin: 5px;
+  text-align: center;
+}
+.productinfo h3, h2
+{
+  margin: 10px;
+}
+
+.productinfo a
+{
+  color: #363432;
+}
+
+.productinfo .btn
+{
+  padding: 15px;
+}
+
+.productinfo img
+{
+  height: 300px;
+  width: 100%;
+} 
+
+/* Forms Input */
+
+.text-input
+{
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    outline: none; 
+    color: #444;
+    line-height: 1.5rem;
+    border: 1px solid #444;
+    font-size: 1.2em;
+    border: 2px solid #d3d3d3;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    outline: none;
+    padding: 10px;
+}
+
+.form-errors 
+{
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 2px;
+   
+}
+.form-errors span
+{
+    color: #444;
+    opacity: 100%;
+    display: block;
+}
+
+
+
+/* registration and login */
+
+.auth-content
+{
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    background: white;
+}
+
+.auth-content .form-title
+{
+    text-align: center; 
+    margin-bottom: 30px;
+}
+.auth-content label
+{
+    font-size: 1.1em;
+}
+.auth-content form div
+{
+    margin-bottom: 10px;
+}
+.name-container
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.f
+{
+    margin-top: -20px;
+}
+.fname
+{
+    width: 48%;
+}
+.lname
+{
+    width: 48%;
+}

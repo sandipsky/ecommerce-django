@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="auth-content"> 
+
+    <h1 class="form-title">Create an Account</h1>
+    <br><br><br>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+        <div class="form-errors">
+            <span>{{form.email.errors|striptags}}</span>
+            <span>{{form.username.errors|striptags}}</span>
+            <span>{{form.password2.errors|striptags}}</span>
+        </div>
+        {% endif %}
+        <div class="name-container">
+            <div class="fname">
+                <label for="firstname"><h3>First Name</h3></label>
+                {{form.first_name}}
+                
+            </div>
+            <div class="lname">
+                <label for="lastname"><h3>Last Name</h3></label>
+                {{form.last_name}}
+            </div>
+        </div>
+       
+        <div class="f">
+            <label for="username"><h3>Username</h3></label>
+            {{form.username}}
+        </div>
+
+        <div>
+            <label for="email"><h3>Email</h3></label>
+            {{form.email}}
+        </div>
+
+        <div>
+            <label for="password1"><h3>Password</h3></label>
+            {{form.password1}}
+        </div>
+        <div>
+            <label for="password2"><h3>Confirm Password</h3></label>
+            {{form.password2}}
+        </div>
+
+        <input type="submit" class="btn" value="Sign Up">
+        <br><br>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        
+    
+
+    </form>
+</div>
+
+{% endblock %}

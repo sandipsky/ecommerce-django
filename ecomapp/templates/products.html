@@ -3,76 +3,49 @@
 {% block content %}
 
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="left-sidebar">
-                    <h2>Category</h2>
-                    <div class="panel-group category-products" id="accordian"><!--category-products-->  
-                        
-                        <!-- loop header -->
-
-                        {% for category in categories %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#"><span class="pull-right">{{category.product_count}}</span>{{category.name}}</a></h4>
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                        <!-- loopend -->
-                    </div><!--/category-products-->
-                
-                    <div class="brands_products"><!--brands_products-->
-                        <h2>Brands</h2>
-                        <div class="brands-name">
-                            <ul class="nav nav-pills nav-stacked">
-
-                                <!-- loop here -->
-
-
-                                {% for brand in brands %}
-                                <li><a href="#"><span class="pull-right">{{brand.product_count}}</span>{{brand.name}}</a></li>
-                                {% endfor %}
-                                <!-- loopend -->
-
-                            </ul>
-                        </div>
-                    </div><!--/brands_products-->
-                    
-                    
-                
-                </div>
-            </div>
-            
-            <div class="col-sm-9 padding-right">
-                <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Products</h2>
-                    {% for product in products %}
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="{{product.image.url}}" alt="" />
-                                        <h4>{{product.name}}</h4>
-                                        <h2>Rs. {{product.price}}</h2>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="container">
+    <div class="leftside">
+        <div class="category">
+            <h1>Category</h1>
+            <div class="category-list">          
+                <ul>
+                    <li><a href="{% url 'products' %}">All</a><span class="pull-right">{{count}}</span></li>
+                    {% for category in categories %}  
+                    <li><a href="/?category={{category.id}}">{{category.name}}<span class="pull-right">{{category.product_count}}</span></a></li>
                     {% endfor %}
-                    
-                    
-                </div><!--features_items-->
-                
-                
-                
-                
-                
+                </ul>
             </div>
+         </div><!--/category-products-->
+            
+        <div class="brands">
+            <h1>Brands</h1>
+            <div class="brands-list">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="{% url 'products' %}">All</a><span class="pull-right">{{count}}</span></li>
+                    {% for brand in brands %}
+                    <li><a href="/?brand={{brand.id}}">{{brand.name}}<span class="pull-right">{{brand.product_count}}</span></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div><!--/brands_products-->
+                
+    </div>
+        
+    <div class="rightside">
+        <h1 class="title">Products</h1>
+        <div class="product-wrapper">
+            {% for product in products %}
+            <div class="productinfo">
+                <img src="{{product.image.url}}" alt="" />
+                <h3>{{product.name}}</h3>
+                <h2>Rs. {{product.price}}</h2>
+                <a href="#" class="btn"><i class="fa fa-shopping-cart"></i>  Add to cart</a>
+            </div>
+            {% endfor %}
         </div>
     </div>
-</section>
+                
+                
+  
+</div>
 {% endblock %}
