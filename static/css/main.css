@@ -291,8 +291,19 @@ footer
   padding: 30px;
   margin: 0px auto;
   width: 95%;
-  
+}
 
+.passcontainer
+{
+  display: block;
+  padding: 30px;
+  margin: 0px auto;
+  width: 80%;
+}
+.passcontainer a
+{
+  text-decoration: underline;
+  color: purple;
 }
 
 .leftside
@@ -489,4 +500,8 @@ footer
 .lname
 {
     width: 48%;
+}
+.forgot
+{
+  float: right;
 }
