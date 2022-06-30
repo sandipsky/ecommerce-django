@@ -3,6 +3,7 @@ from django.forms import ModelForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib.auth import authenticate
 
 
@@ -46,4 +47,15 @@ class CreateUser(UserCreationForm):
         if User.objects.filter(email=email).exists() and email !="":
             raise forms.ValidationError("Email is already used")
         return email
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
+
+# class ProfileEditForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = '__all__'
 
