@@ -49,13 +49,26 @@ class CreateUser(UserCreationForm):
         return email
 
 class UserEditForm(forms.ModelForm):
+    first_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'class':'text-input', 'placeholder':'First Name'}),
+    )
+    last_name = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'class':'text-input', 'placeholder':'Last Name'}),
+    )
+    email = forms.EmailField(
+        required=False,
+        widget=forms.EmailInput(attrs={'class':'text-input', 'placeholder':'Enter your Email'}),
+    )
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'email')
 
 
-# class ProfileEditForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = '__all__'
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('image',)
 

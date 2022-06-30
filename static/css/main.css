@@ -505,3 +505,68 @@ footer
 {
   float: right;
 }
+
+.dash-content
+{
+  width: 85%;
+  height: 600px;
+  /* border: 1px solid black; */
+  display: flex;
+  margin: 10px auto;
+}
+.dash-content .rightside
+{
+  border-left: 1px solid #ccc;
+  padding-left: 30px;
+}
+
+.dash-content .leftside
+{
+  /* border: 1px solid green; */
+  padding: 50px 0px;
+}
+.dash-content .leftside li
+{
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0px;
+  width: 100%;
+}
+.dash-content .leftside ul
+{
+  width: 85%;
+}
+
+.dash-content .rightside .auth-content
+{
+  width: 80%;
+}
+
+.profile-container
+{
+  display: flex;
+  flex-direction: column;
+}
+.imagecontainer
+{
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin: 10px auto;
+  overflow: hidden;
+
+}
+.imagecontainer img
+{
+  height: 100%;
+  width: 100%;
+}
+.profilecontent
+{
+  margin-top: 20px;
+}
+
+.profilecontent .user
+{
+  text-align: center;
+}

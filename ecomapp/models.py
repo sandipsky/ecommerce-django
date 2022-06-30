@@ -26,9 +26,8 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    @property
     def get_photo_url(self):
-        if self.cover and hasattr(self.image, 'url'):
+        if self.image and hasattr(self.image, 'url'):
             return self.image.url
         else:
             return "/static/images/default.jpg"

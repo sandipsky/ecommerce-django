@@ -1,0 +1,33 @@
+{% extends 'dashboard.html' %}
+
+{% block section %}
+<h1>Dashboard</h1>
+
+<div class="profile-container">
+    <div class="imagecontainer">
+        <img src="{{u.get_photo_url}}" alt="">
+    </div>
+    <div class="profilecontent">
+        <h2 class="user">Hello, {{request.user.username}}</h2>
+        <br><br><br>
+        <h2>Account Details</h2>
+        <br>
+        <div class="name-container">
+            <div class="fname">
+                <label for="firstname"><h3>First Name</h3></label>
+                {{request.user.first_name}}
+                
+            </div>
+            <div class="lname">
+                <label for="lastname"><h3>Last Name</h3></label>
+                {{request.user.last_name}}
+            </div>            
+        </div>
+        <br>
+        <div>
+            <label for="email"><h3>Email</h3></label>
+            {{request.user.email}}
+        </div>
+    </div>
+</div>
+{% endblock %}

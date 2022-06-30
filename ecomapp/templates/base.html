@@ -3,6 +3,7 @@
 
 {% url 'register' as register %}
 {% url 'login' as login %}
+{% url 'dashboard' as dashboard %}
 
 
 <!DOCTYPE html>
@@ -65,7 +66,7 @@
               <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-user"></i> Profile</a>
+              <a href="{% url 'dashboard' %}" class="{% if request.path == dashboard %} active {% endif %}"><i class="fa fa-user"></i> Profile</a>
             </li>
             <li>
               <a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a>

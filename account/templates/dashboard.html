@@ -3,6 +3,18 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1>Dashboard</h1>
-<p>Welcome to your dashboard. You can <a href="{% url "edit" %}">edit your profile</a> or <a href="{% url "password_change" %}">change your password</a>.</p>
+<div class="dash-content">
+    <div class="leftside">
+        <ul>
+            <li><a href="{% url "dashboard" %}"><i class="fas fa-eye"></i> Dashboard</a></li>
+            <li><a href="{% url "edit" %}"><i class="fas fa-edit"></i> Edit Profile</a></li>
+            <li><a href="{% url "password_change" %}"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a></li>
+        </ul>
+    </div>
+    <div class="rightside">
+        {% block section %}
+        {% endblock %}
+    </div>
+</div>
 {% endblock %}

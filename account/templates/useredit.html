@@ -1,14 +1,49 @@
-{% extends 'base.html' %}
+{% extends 'dashboard.html' %}
 
 {% block title %}Edit your account{% endblock %}
 
-{% block content %}
-<h1>Edit your account</h1>
-<p>You can edit your account using the following form:</p>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ user_form.as_p }}
+{% block section %}
+
+<h1></h1>
+
+
+<div class="auth-content"> 
+  <h1 class="form-title">Edit your account</h1>
+  <br><br><br>
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if form.errors %}
+      <div class="form-errors">
+          <span>{{form.errors}}</span>
+      </div>
+      {% endif %}
+      <div class="name-container">
+          <div class="fname">
+              <label for="firstname"><h3>First Name</h3></label>
+              {{user_form.first_name}}
+              
+          </div>
+          <div class="lname">
+              <label for="lastname"><h3>Last Name</h3></label>
+              {{user_form.last_name}}
+          </div>
+      </div>
+      <div>
+          <label for="email"><h3>Email</h3></label>
+          {{user_form.email}}
+      </div>
+      <br>
+      <div>
+        <label for=""><h3>Image</h3></label>
+        {{profile_form.image}}
+      </div>
+
+      <br>
+      <input type="submit" class="btn" value="Save changes">
+      <br><br>
+      
   
-  <p><input type="submit" value="Save changes" /></p>
-</form>
+
+  </form>
+</div>
 {% endblock %}
