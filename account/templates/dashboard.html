@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
+{% url 'dashboard' as dashboard %}
+{% url 'password_change' as password_change %}
+{% url 'edit' as edit %}
+
+
+
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
 <div class="dash-content">
     <div class="leftside">
         <ul>
-            <li><a href="{% url "dashboard" %}"><i class="fas fa-eye"></i> Dashboard</a></li>
-            <li><a href="{% url "edit" %}"><i class="fas fa-edit"></i> Edit Profile</a></li>
-            <li><a href="{% url "password_change" %}"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a></li>
+            <li><a href="{% url "dashboard" %}"  class="{% if request.path == dashboard %} active {% endif %}"><i class="fas fa-eye"></i> Dashboard</a></li>
+            <li><a href="{% url "edit" %}" class="{% if request.path == edit  %} active {% endif %}"><i class="fas fa-edit"></i> Edit Profile</a></li>
+            <li><a href="{% url "password_change" %}" class="{% if request.path == password_change %} active {% endif %}"><i class="fa fa-key" aria-hidden="true"></i> Change Password</a></li>
             <li><a href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a></li>
         </ul>
     </div>

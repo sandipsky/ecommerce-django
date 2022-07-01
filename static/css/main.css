@@ -525,6 +525,16 @@ footer
   /* border: 1px solid green; */
   padding: 50px 0px;
 }
+
+.dash-content .leftside a:hover
+{
+  color:#fe980f;
+}
+
+.dash-content .leftside a.active
+{
+  color:#fe980f;
+}
 .dash-content .leftside li
 {
   border-bottom: 1px solid #ccc;
