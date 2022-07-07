@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-content">
+    <h1 class="form-title">Contact Form</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <label for=""><h3>Name</h3></label>
+            <input name="name" class="text-input" type="text">
+        </div>
+        <div>
+            <label for=""><h3>Email</h3></label>
+            <input name="email_address" class="text-input" type="email">
+        </div>
+        <div>
+            <label for=""><h3>Subject</h3></label>
+            <input name="subject" class="text-input" type="text">
+        </div>
+        <div>
+            <label for=""><h3>Message</h3></label>
+            <textarea name="message" class="text-input" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn">Send a Message</button>
+    </form>
+</div>
+
+{% endblock %}

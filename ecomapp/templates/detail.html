@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="flexer">
+<div class="detail-container">
+    <div class="detail-left">
+        <img src="{{ product.get_photo_url }}" alt="" />
+    </div>
+    <div class="detail-right">
+        <h1>{{ product.name }}</h1>
+        <br><br><br>
+        <h1>Rs. {{ product.price }}</h1>
+        <br><br>
+        <form action="" method="post">
+            <label for="">Quantity</label>
+            <input type="text">
+        </form>
+        <br><br>
+        <a href="{% url 'cart' %}" class="btn">Add to Cart</a>
+        <br> <br><br>
+        <h3>Availability: In Stock</h3>
+    </div>
+</div>
+<br><br><br>
+<div class="prod-link">
+    <ul>
+        <li><h3><a href="#" class="active2">Specifications</a></h3></li>
+        <li><h3><a href="#">Reviews</a></h3></li>
+    </ul>
+</div>
+<br>
+<div class="mini">
+    {% block con %}
+
+    {% endblock %}
+</div>
+</div>
+{% endblock %}

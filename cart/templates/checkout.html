@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="checkout-container">
+    <div class="checkout-left">
+        <div class="auth-content">
+            <h1 class="ch">Checkout</h1>
+            <form action="" method="post">
+                <div>
+                    <label for=""><h3>Phone Number</h3></label>
+                    <input type="text" class="text-input">
+                </div>
+                <div>
+                    <label for=""><h3>Address</h3></label>
+                    <input type="text" class="text-input">
+                </div>
+                <div>
+                    <label for=""><h3>City</h3></label>
+                    <input type="text" class="text-input">
+                </div>
+                <div>
+                    <label for=""><h3>Card Number</h3></label>
+                    <input type="text" class="text-input">
+                </div>
+                <div>
+                    <label for=""><h3>CVV</h3></label>
+                    <input type="text" class="text-input">
+                </div>
+                <div>
+                    <label for=""><h3>Expiration Date</h3></label>
+                    <input type="text" class="text-input">
+                </div>
+                <button type="submit" class="btn">Pay</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="checkout-right">
+        <h1>Order Summary</h1>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>12</td>
+                <td>1200000</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="cart-bottom">
+            <h2>Items: 6</h2>
+            <h2>Total: 1000000</h2>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

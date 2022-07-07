@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="cart-container">
+    <div class="cart-content">
+        <table>
+            <tr>
+                <th></th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td><img src="{{product.get_photo_url}}"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>12</td>
+                <td>1200000</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="cart-bottom">
+        <h1>Items: 6</h1>
+        <h1>Total: 1000000</h1>
+        <div class="buttons">
+            <a href="{% url 'products' %}" class="btn">Continue Shopping</a>
+            <a href="{% url 'checkout' %}" class="btn">Checkout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -36,8 +36,8 @@
         <div class="product-wrapper">
             {% for product in page_obj %}
             <div class="productinfo">
-                <a href="#"><img src="{{product.image.url}}" alt="" /></a>
-                <h2><a href="#">{{product.name}}</a></h2>
+                <a href="{% url 'specs' product.id %}"><img src="{{product.image.url}}" alt="" /></a>
+                <h2><a href="{% url 'specs' product.id %}">{{product.name}}</a></h2>
                 <h2>Rs. {{product.price}}</h2>
                 <a href="#" class="btn"><i class="fa fa-shopping-cart"></i>  Add to cart</a>
             </div>

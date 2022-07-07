@@ -3,6 +3,9 @@ from django.shortcuts import redirect, render
 from .models import Category, Brand, Product
 from django.db.models import Count
 from django.core.paginator import Paginator
+from .forms import ContactForm
+from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
 
 # Create your views here.
 
@@ -45,5 +48,36 @@ def products(request):
 
     }
     return render(request, 'products.html', context)
+
+# def productDetail(request, pk):
+#     product = Product.objects.get(id=pk)
+#     print(product.name)
+#     return render(request, 'detail.html', {'product': product})
+
+def productSpecs(request, pk):
+    product = Product.objects.get(id=pk)
+    print(product.name)
+    return render(request, 'specs.html', {'product': product})
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid(): 
+            email = form.cleaned_data['email_address'] 
+            subject = form.cleaned_data['subject']
+            body = {
+			'name': form.cleaned_data['name'],  
+			'email': form.cleaned_data['email_address'], 
+			'message':form.cleaned_data['message'], 
+			}
+            message = "\n".join(body.values())
+            send_mail(subject, message, email, ['sandip.sky2057@gmail.com']) 
+            return redirect ("success")
+      
+    form = ContactForm()
+    return render(request, "contact.html", {'form':form})
+
+def success(request):
+    return render(request, 'success.html')
 
 

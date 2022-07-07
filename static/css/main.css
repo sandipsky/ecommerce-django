@@ -312,6 +312,7 @@ footer
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 1px solid red; */
 }
 
 .leftside h1
@@ -579,4 +580,148 @@ footer
 .profilecontent .user
 {
   text-align: center;
+}
+
+.cart-container
+{
+  display: flex;
+  flex-direction: column;
+}
+.cart-content
+{
+  width: 85%;
+  /* border: 1px solid #ccc; */
+  margin: 0px auto;
+  box-shadow: 1rem 1rem 1rem 1rem #a0a0a033;
+}
+
+.cart-content table
+{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th
+{
+  background-color: #fe980f;
+  padding: 10px;
+  text-align: left;
+}
+
+
+table img 
+{
+  height: 200px;
+  width: 200px;
+  margin-left: 10px;
+}
+
+.cart-bottom
+{
+  margin: 10px auto;
+  width: 85%;
+  /* border: 1px solid #ccc; */
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkout-container
+{
+  display: flex;
+  margin: 10px auto;
+  width: 85%;
+}
+.checkout-container .auth-content
+{
+  width: 100%;
+}
+.checkout-left
+{
+  width: 60%;
+  /* border: 1px solid black; */
+  /* box-shadow: 10px 10px #a0a0a033; */
+  
+}
+.checkout-right
+{
+  width: 40%;
+  /* border: 1px solid red; */
+  /* border-left: 1px solid #ccc; */
+  padding: 20px;
+}
+.checkout-right table
+{
+  margin-top: 20px;
+  width: 100%;
+}
+.ch
+{
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+.flexer
+{
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 10px auto;
+}
+.detail-container
+{
+  display: flex;
+}
+
+.detail-left
+{
+  width: 50%;
+  /* border: 1px solid black; */
+}
+
+.detail-left img
+{
+  height: 600px;
+  width: 100%;
+}
+
+.detail-right
+{
+  width: 50%;
+  border-left: 1px solid #ccc;
+  /* border: 1px solid red; */
+  padding: 30px 0px 0 20px;
+}
+
+.prod-link ul
+{
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.prod-link a:hover
+{
+  border-bottom: 1px solid #fe980f;
+  color: #fe980f;
+}
+.mini
+{
+  border: 1px solid green;
+  /* height: 600px; */
+  padding: 10px;
+}
+
+.active2
+{
+  border-bottom: 1px solid #fe980f;
+  color: #fe980f;
+}
+
+pre
+{
+  font-size: 1.1em;
+  margin-left: 30px;
 }
