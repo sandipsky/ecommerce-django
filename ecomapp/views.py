@@ -25,6 +25,8 @@ def products(request):
         products = Product.objects.filter(name__icontains=search)
     else:
         products = Product.objects.all()
+
+
     count = Product.objects.count()
     categories = Category.objects.all().annotate(product_count=Count('product'))
     brands = Brand.objects.all().annotate(product_count=Count('product'))

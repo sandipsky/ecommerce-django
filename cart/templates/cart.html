@@ -8,28 +8,54 @@
             <tr>
                 <th></th>
                 <th>Item</th>
-                <th>Price</th>
                 <th>Quantity</th>
+                <th>Price</th>
                 <th>Total</th>
+                <th></th>
             </tr>
-            {% for product in products %}
+            {% with carts=cart.list   %}
+            {% for cart in carts %}
             <tr>
-                <td><img src="{{product.get_photo_url}}"></td>
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>12</td>
-                <td>1200000</td>
+                <td><img src="{{cart.obj.get_photo_url}}"></td>
+                <td>{{cart.obj.name}}</td>
+                <td>
+                    <form action="{% url 'update_cart' cart.id %}" method="post"
+                                        >
+                                        {% csrf_token %}
+                                        {{form}}
+                                        <input type="number" name="quantity" placeholder="1" style="width: 68px;"
+                                            value="{{cart.quantity}}" />
+                                        <button class="btn" type="submit">
+                                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                                            Update
+                                        </button>
+                                    </form>
+                </td>
+                <td>Rs.{{cart.obj.price}}</td>
+                <td>Rs. {{cart.price}}</td>
+                
+                <td>
+                <form action="{% url 'delete_cart' cart.id %} " method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash"></i>
+                    </button>
+
+                </form>
+                </td>
             </tr>
             {% endfor %}
         </table>
     </div>
+    <br><br> <br><br><br><br>
     <div class="cart-bottom">
-        <h1>Items: 6</h1>
-        <h1>Total: 1000000</h1>
+        <h1>Items: {{ cart.items }}</h1>
+        <h1>Total: Rs {{ cart.get_total_amount }}</h1>
         <div class="buttons">
             <a href="{% url 'products' %}" class="btn">Continue Shopping</a>
             <a href="{% url 'checkout' %}" class="btn">Checkout</a>
         </div>
     </div>
+    {% endwith %}
 </div>
+
 {% endblock %}

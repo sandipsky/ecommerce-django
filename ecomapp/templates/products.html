@@ -39,7 +39,14 @@
                 <a href="{% url 'specs' product.id %}"><img src="{{product.image.url}}" alt="" /></a>
                 <h2><a href="{% url 'specs' product.id %}">{{product.name}}</a></h2>
                 <h2>Rs. {{product.price}}</h2>
-                <a href="#" class="btn"><i class="fa fa-shopping-cart"></i>  Add to cart</a>
+                <form action="{% url 'addtocart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="number" name="quantity" placeholder="1" value="1" style="display: none;"/>
+                    <button class="btn" type="submit">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    Add to cart
+                    </button>
+            </form>
             </div>
             {% endfor %}
         </div>

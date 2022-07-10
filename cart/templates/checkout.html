@@ -41,23 +41,25 @@
         <table>
             <tr>
                 <th>Item</th>
-                <th>Price</th>
                 <th>Quantity</th>
+                <th>Price</th>
                 <th>Total</th>
             </tr>
-            {% for product in products %}
+            {% with carts=cart.list   %}
+            {% for cart in carts %}
             <tr>
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>12</td>
-                <td>1200000</td>
+                <td>{{cart.obj.name}}</td>
+                <td>{{cart.quantity}}</td>
+                <td>Rs.{{cart.obj.price}}</td>
+                <td>Rs. {{cart.price}}</td>
             </tr>
             {% endfor %}
         </table>
         <div class="cart-bottom">
-            <h2>Items: 6</h2>
-            <h2>Total: 1000000</h2>
+            <h2>Items: {{ cart.items }}</h2>
+            <h2>Total: Rs {{ cart.get_total_amount }}</h2>
         </div>
+        {% endwith %}
     </div>
 </div>
 

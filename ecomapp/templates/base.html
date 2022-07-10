@@ -1,6 +1,4 @@
-{% url 'products' as pro %}
 {% url 'index' as index %}
-{% url 'cart' as cart %}
 {% url 'register' as register %}
 {% url 'login' as login %}
 {% url 'dashboard' as dashboard %}
@@ -66,7 +64,7 @@
           <ul>
             {% if request.user.is_authenticated %}
             <li>
-              <a href="{% url 'cart' %}" class="{% if request.path == cart %} active {% endif %}"><i class="fa fa-shopping-cart"></i> Cart</a>
+              <a href="{% url 'cart' %}" class="{% if 'cart' in request.path %} active {% endif %}"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
             <li>
               <a href="{% url 'dashboard' %}" class="{% if request.path == dashboard or request.path == password_change or request.path == edit %} active {% endif %}"><i class="fa fa-user"></i> Profile</a>
@@ -93,7 +91,7 @@
             <li><a href="{% url 'contact' %}" class="{% if request.path == contact %} active {% endif %}">Contact</a></li>
           </ul>
         </div>
-        {% if request.path == index or request.path == product %}  
+        {% if request.path == index or request.path == pro %}  
         <div class="search_box">
           <form action="{% url 'products' %}" method="get" class="search-form">
             {% csrf_token %}
@@ -106,7 +104,6 @@
         {% endif %}
       </div>
     </header>
-
     {% block content %} {% endblock %}
 
     <footer>

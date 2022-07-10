@@ -146,4 +146,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = str(os.getenv('EMAIL'))
 EMAIL_HOST_PASSWORD = str(os.getenv('PASSWORD'))
 
+CART_SESSION_KEY = 'product_cart'
+
 
