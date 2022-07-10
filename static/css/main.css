@@ -756,3 +756,69 @@ pre
   width: 100%;
   height: 100%;
 }
+
+.mainslider1
+{
+  
+  position: relative;
+  width: 85%;
+  margin: 10px auto;
+  /* border: 1px solid black; */
+  padding: 10px;
+}
+.mainslider
+{
+  
+  position: relative;
+  width: 95%;
+  margin: 10px auto;
+  /* border: 1px solid black; */
+  padding: 10px;
+}
+
+
+.next1, .next2, .next3
+{
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    cursor: pointer;
+    font-size: 2em;
+    color: gray;
+    z-index: 9999;
+}
+.prev1, .prev2, .prev3
+{
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    cursor: pointer;
+    font-size: 2em;
+    color: gray;
+    /* z-index: 9999; */
+}
+
+.post-wrapper, .post-wrapper2, .post-wrapper3
+{
+    margin: auto;
+    overflow: hidden;
+    /* border: 1px solid green; */
+    padding: 5px;
+    /* height: 500px; */
+}
+
+.slide {
+  width: 100%;
+  height: 500px;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+
+

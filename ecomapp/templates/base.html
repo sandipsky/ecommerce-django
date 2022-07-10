@@ -91,7 +91,7 @@
             <li><a href="{% url 'contact' %}" class="{% if request.path == contact %} active {% endif %}">Contact</a></li>
           </ul>
         </div>
-        {% if request.path == index or request.path == pro %}  
+        {% if request.path == index or 'products' in request.path %}  
         <div class="search_box">
           <form action="{% url 'products' %}" method="get" class="search-form">
             {% csrf_token %}

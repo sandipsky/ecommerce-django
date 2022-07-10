@@ -2,11 +2,70 @@
 
 {% block content %}
 
-<h1>Index page</h1>
-<br><br>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis magni ad cumque. A, impedit! Accusamus facere dicta, aliquid magnam itaque neque. Unde et ex expedita asperiores explicabo, laudantium eum necessitatibus, aut nihil commodi excepturi soluta ullam sit possimus consectetur nemo perferendis consequatur dolorem doloremque voluptates autem libero voluptate quas dignissimos.</p>
-<br><br>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates atque similique perferendis provident odio eius ut animi aliquid deleniti est?</p>
-<br><br>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, deleniti?</p>
+<div class="mainslider">
+    <i class="fas fa-chevron-left prev1"></i>
+    <i class="fas fa-chevron-right next1"></i>
+    <div class="post-wrapper">
+        <div class="slide">
+            <img src="/static/images/banner/1.jpg" alt="">
+        </div>
+        <div class="slide">
+            <img src="/static/images/banner/2.jpg" alt="">
+        </div>
+        <div class="slide">
+            <img src="/static/images/banner/3.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+
+    <br>
+    <h1 align="center">New Arrivals</h1>
+    <div class="mainslider1">
+        <i class="fas fa-chevron-left prev2"></i>
+        <i class="fas fa-chevron-right next2"></i>
+        <div class="post-wrapper2">
+            {% for recent in recents %}
+        <div class="productinfo">
+            <a href="{% url 'specs' recent.id %}"><img src="{{recent.image.url}}" alt="" /></a>
+            <h2><a href="{% url 'specs' recent.id %}">{{recent.name}}</a></h2>
+            <h2>Rs. {{recent.price}}</h2>
+            <form action="{% url 'addtocart' recent.id %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="quantity" placeholder="1" value="1" style="display: none;"/>
+                <button class="btn" type="submit">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Add to cart
+                </button>
+        </form>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <br>
+    <h1 align="center">Best Selling</h1>
+    <div class="mainslider1">
+        <i class="fas fa-chevron-left prev3"></i>
+        <i class="fas fa-chevron-right next3"></i>
+        <div class="post-wrapper3">
+            {% for product in products %}
+        <div class="productinfo">
+            <a href="{% url 'specs' product.id %}"><img src="{{product.image.url}}" alt="" /></a>
+            <h2><a href="{% url 'specs' product.id %}">{{product.name}}</a></h2>
+            <h2>Rs. {{product.price}}</h2>
+            <form action="{% url 'addtocart' product.id %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="quantity" placeholder="1" value="1" style="display: none;"/>
+                <button class="btn" type="submit">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Add to cart
+                </button>
+        </form>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <p align="center"> <a href="{% url 'products' %}" class="btn" >Shop Now</a></p>
+
+    <br><br>
 {% endblock %}

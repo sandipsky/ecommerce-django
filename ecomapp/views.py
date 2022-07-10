@@ -11,11 +11,13 @@ from django.conf import settings
 # Create your views here.
 
 def index(request):
+    recents = Product.objects.all().order_by('-id')[:5]
+    products = Product.objects.all().order_by('id')
     search=""
     if 'search' in request.GET:
         search = request.GET['search']
         products = Product.objects.filter(name__icontains=search)
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'recents':recents, 'products':products})
 
 
 
