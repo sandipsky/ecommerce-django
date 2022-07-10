@@ -1,9 +1,10 @@
+from multiprocessing import context
 from unicodedata import category
 from django.shortcuts import redirect, render
-from .models import Category, Brand, Product
+from .models import Category, Brand, Product, Review
 from django.db.models import Count
 from django.core.paginator import Paginator
-from .forms import ContactForm
+from .forms import ContactForm, ReviewForm
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
 
@@ -51,15 +52,26 @@ def products(request):
     }
     return render(request, 'products.html', context)
 
-# def productDetail(request, pk):
-#     product = Product.objects.get(id=pk)
-#     print(product.name)
-#     return render(request, 'detail.html', {'product': product})
-
-def productSpecs(request, pk):
+def productDetail(request, pk):
     product = Product.objects.get(id=pk)
+    reviews = Review.objects.filter(product=product)
     print(product.name)
-    return render(request, 'specs.html', {'product': product})
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+	    #to add logged in user as default
+            form.instance.user = request.user
+            form.instance.product = product
+            form.save()
+        return redirect(request.path)
+    else:
+        form = ReviewForm()
+    context = {
+        'form':form,
+        'product': product,
+        'reviews': reviews,
+    }
+    return render(request, 'detail.html', context)
 
 def contact(request):
     if request.method == 'POST':

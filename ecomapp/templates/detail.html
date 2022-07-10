@@ -11,29 +11,56 @@
         <h1>{{ product.name }}</h1>
         <br><br><br>
         <h1>Rs. {{ product.price }}</h1>
-        <br><br>
-        <form action="" method="post">
-            <label for="">Quantity</label>
-            <input type="text">
-        </form>
-        <br><br>
-        <a href="{% url 'cart' %}" class="btn">Add to Cart</a>
+        <br><br>    
+        <form action="{% url 'addtocart' product.id %}" method="post">
+            {% csrf_token %}
+            <span>Quantity: </span><input type="number" name="quantity" placeholder="1"/>
+            <br><br>
+            <button class="btn" type="submit">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Add to cart
+            </button>
+         </form>
         <br> <br><br>
         <h3>Availability: In Stock</h3>
+        <br><br>
+        <h2>Product Specifications</h2>
+        <br>
+        <pre>{{ product.desc }}</pre>
     </div>
 </div>
 <br><br><br>
-<div class="prod-link">
-    <ul>
-        <li><h3><a href="#" class="active2">Specifications</a></h3></li>
-        <li><h3><a href="#">Reviews</a></h3></li>
-    </ul>
-</div>
+<h1>User Reviews</h1>
 <br>
 <div class="mini">
-    {% block con %}
-
-    {% endblock %}
+    {% if reviews %}
+    {% for review in reviews %}
+    <div class="comment">
+        <div class="comment-left">
+            <div class="comment-img">
+                <img src="{{review.user.profile.get_photo_url}}" alt="">
+            </div>
+        </div>
+        <div class="comment-right">
+            <h2>{{review.user.username}}</h2>
+            <br>
+            <p>{{review.review}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2>No Reviews</h2>
+    {% endif %}
 </div>
+{% if request.user.is_authenticated %}
+<br><br>
+    <h1>Submit Your Review</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <!-- <textarea name="review" rows="10" class="text-input"></textarea> -->
+        {{form.review}}
+        <input type="submit" class="btn" value="Submit">
+    </form>
+    {% endif %}
 </div>
 {% endblock %}
